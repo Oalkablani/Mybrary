@@ -23,18 +23,17 @@
   <button type="submit">Search</button>
 </form>
 
-<div class="books-grid">
+
   <% books.forEach(book => { %>
-    <div class="book-item">
-      <img height="150" width="100" src="<%= book.coverImagePath %>" />
-      <div class="book-details">
-        <label><%= book.title %></label>
-        <% if (book.author) { %>
-          <label><%= book.author.name %></label>
-        <% } else { %>
-          <label>Author Unknown</label>
-        <% } %>
-      </div>
-    </div>
+    <a href="/books/<%= book.id %>">
+      <img height="150" width="100" src="<%= book.coverImagePath %>"
+    /></a>
+      <label><%= book.title %></label>
+
+      <% if (book.author) { %>
+      <label><%= book.author.name %></label>
+      <% } else { %>
+      <label>Author Unknown</label>
+      <% } %>
   <% }) %>
-</div>
+
