@@ -47,8 +47,7 @@ router.post("/", async (req, res) => {
   try {
     const newBook = await book.save();
     res.redirect("books/${newBook.id}");
-  } catch (e) {
-    console.log(e);
+  } catch {
     renderNewPage(res, book, true);
   }
 });
@@ -116,8 +115,6 @@ router.delete("/:id", async (req, res) => {
     }
   }
 });
-
-
 
 function saveCover(book, coverEncoded) {
   if (coverEncoded == null) return;
