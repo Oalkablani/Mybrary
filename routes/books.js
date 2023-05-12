@@ -2,7 +2,6 @@ const express = require("express");
 const router = express.Router();
 const Book = require("../models/book");
 const Author = require("../models/author");
-const { reset } = require("nodemon");
 const imageMimeTypes = ["image/jpeg", "image/png", "image/gif"];
 
 // All books Route
