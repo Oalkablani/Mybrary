@@ -5,6 +5,75 @@
   --form-input-border-color-light: hsl(var(--color-base-hue), 100%, 80%);
 }
 
+/* log in form */ 
+.login-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 10% auto;
+  width: 100%;
+  max-width: 400px;
+  padding: 1rem;
+  padding-top: 3rem;
+  background: #000000;
+  border: 1px solid #ccc;
+  height: 400px;
+}
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+  width: 100%;
+} 
+
+.form-control {
+  font-size: 1.2rem;
+  padding: 0.5rem;
+  border: 1px solid var(--form-input-border-color);
+  border-radius: 0.5rem;
+  background: var(--form-input-background-color);
+  color: white;
+}
+
+.invalid-feedback {
+  color: red;
+  font-size: 0.8rem;
+  margin-top: 0.25rem;
+  display: none;
+}
+
+.password-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 40% auto;
+  width: 100%;
+  max-width: 400px;
+  padding: 1rem;
+  background: #000000;
+  border: 1px solid #ccc;
+}
+
+.search-container {
+  position: relative;
+}
+
+.search-button {
+  cursor: pointer; 
+}
+
+.search-form {
+  display: none;
+  width: 100%;
+  position:static;
+  top: 100%;
+  left: 0;
+  background: #000000;
+  padding: 10px;
+  border: 1px solid #ccc;
+  margin-bottom: 20px;
+}
+
 .form-row {
   display: flex;
   margin-bottom: 0.5rem;
@@ -49,6 +118,7 @@
   font-weight: normal;
   font-family: "Gotham Rounded";
   outline: none;
+  display: block;
 }
 
 .form-item textarea {
@@ -64,6 +134,23 @@
 .form-item select:focus,
 .form-item textarea:focus {
   border-color: var(--form-input-border-color-light);
+}
+
+@media (max-width: 800px) {
+  .form-item {
+    margin-left: 0;
+    margin-bottom: 0.5rem;
+  }
+  
+  .form-row-end {
+    justify-content: flex-start;
+  }
+  .form-row{
+  display: block;
+  }
+  .form-item > label {
+    margin-left: 0;
+  }
 }
 
 .filepond--root {

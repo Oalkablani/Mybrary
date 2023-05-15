@@ -18,27 +18,31 @@ router.get("/", async (req, res) => {
   }
   try {
     const books = await query.populate("author").exec();
+    console.log("executed");
 
     res.render("books/index", {
       books: books,
       searchOptions: req.query,
     });
-  } catch {
+  } catch (e) {
+    console.log(e);
     res.redirect("/");
   }
 });
 
 // New book Route
 router.get("/new", async (req, res) => {
-  renderNewPage(res, new Book());
-});
+  renderNewPage(res, new Book());}
+
+);
+
 
 // Create book Route
 router.post("/", async (req, res) => {
   const book = new Book({
     title: req.body.title,
     author: req.body.author,
-    publishDate: new Date(req.body.publishDate),
+    publishDate: req.body.publishDate,
     pageCount: req.body.pageCount,
     description: req.body.description,
   });
@@ -64,12 +68,14 @@ router.get("/:id", async (req, res) => {
 // Edit Book Route
 router.get("/:id/edit", async (req, res) => {
   try {
+    
     const book = await Book.findById(req.params.id);
     renderEditPage(res, book);
   } catch {
     res.redirect("/");
   }
-});
+}
+);
 
 // Update Book Route
 router.put("/:id", async (req, res) => {
@@ -79,7 +85,7 @@ router.put("/:id", async (req, res) => {
     book = await Book.findById(req.params.id);
     book.title = req.body.title;
     book.author = req.body.author;
-    book.publishDate = new Date(req.body.publishDate);
+    book.publishDate = req.body.publishDate;
     book.pageCount = req.body.pageCount;
     book.description = req.body.description;
     if (req.body.cover != null && req.body.cover !== "") {
@@ -113,6 +119,7 @@ router.delete("/:id", async (req, res) => {
       res.redirect("/");
     }
   }
+
 });
 
 function saveCover(book, coverEncoded) {

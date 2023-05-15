@@ -20,19 +20,41 @@
   text-decoration: none;
   text-align: center;
 }
+@media (max-width: 800px) {
+  button, .btn-primary, .btn-danger,.btn {
+    font-size: 1rem;
+    padding: .4rem .8rem;
+    
+    
+  }
+}
+@media (max-width: 600px) {
+  button, .btn-primary a, .btn-danger a,.btn a {
+    font-size: .5rem;
+    padding: .2rem .4rem;
+    display: block;
+    
+  }
+}
 
+/* @media (max-width: 400px) {
+  .btn {
+    font-size: .2rem;
+    padding: .1rem .2rem;
+  }
+} */
 .btn-row {
   display: flex;
   align-items: flex-start;
 }
 
-.btn-row > * {
+/* .btn-row > * {
   margin-left: 1rem;
 }
 
 .btn-row > *:first-child {
   margin-left: 0;
-}
+} */
 
 .btn-primary {
   color: var(--color-btn-primary-text);

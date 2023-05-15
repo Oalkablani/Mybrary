@@ -1,5 +1,9 @@
-<h2 class="page-header">Search Books</h2>
-<form action="/books" method="GET">
+<script defer src="/javascripts/books.js"></script>
+
+<h2 class="search-button" onclick="toggleSearchForm()" class="page-header">Search Books ↔ </h2>
+<!-- <input type="search" class="search-button" onclick="toggleSearchForm()">Search</input> -->
+<div class="search-container" > 
+<form action="/books" method="GET" id="searchForm" class="search-form">
   <div class="form-row">
     <div class="form-item">
       <label>Title</label>
@@ -10,7 +14,7 @@
     <div class="form-item">
       <label>Publish After</label>
       <input
-        type="date"
+        type="number"
         name="publishedAfter"
         value="<%= searchOptions.publishedAfter %>"
       />
@@ -19,7 +23,7 @@
     <div class="form-item">
       <label>Publish Before</label>
       <input
-        type="date"
+        type="number"
         name="publishedBefore"
         value="<%= searchOptions.publishedBefore %>"
       />
@@ -31,14 +35,14 @@
   </div>
 </form>
 
-<% books.forEach(book => { %>
-<a href="/books/<%= book.id %>">
-  <img height="150" width="100" src="<%= book.coverImagePath %>"
-/></a>
-<label><%= book.title %></label>
+</div>
 
-<% if (book.author) { %>
-<label><%= book.author.name %></label>
-<% } else { %>
-<label>Author Unknown</label>
-<% } %> <% }) %>
+
+<% books.forEach(book => { %>
+  
+<a href="/books/<%= book.id %>">
+  <img class="book-cover-large"src="<%= book.coverImagePath %>"
+/></a>
+
+<% }) %>
+

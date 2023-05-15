@@ -1,6 +1,5 @@
 const mongoose = require("mongoose");
-
-
+const Author = require("./author")
 
 
 const bookSchema = new mongoose.Schema({
@@ -11,7 +10,7 @@ const bookSchema = new mongoose.Schema({
     type: String,
   },
   publishDate: {
-    type: Date,
+    type: Number,
   },
   pageCount: {
     type: Number,
@@ -33,7 +32,7 @@ const bookSchema = new mongoose.Schema({
   author: {
     type: mongoose.Schema.Types.ObjectId,
     required: true,
-    ref: "Author",
+    ref: Author,
   },
 });
 
@@ -45,5 +44,12 @@ bookSchema.virtual("coverImagePath").get(function () {
   }
 });
 
-module.exports = mongoose.model("Book", bookSchema);
+// module.exports = mongoose.model("Book", bookSchema);
+
+// module.exports = (db) => db.model('Book', bookSchema);
+
+const bookConnection = mongoose.createConnection(process.env.DATABASE_URL);
+
+
+module.exports = bookConnection.model('Book', bookSchema);
 

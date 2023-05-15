@@ -22,14 +22,19 @@ router.get("/", async (req, res) => {
 
 // New Author Route
 router.get("/new", (req, res) => {
-  res.render("authors/new", { author: new Author() });
+  
+  res.render("authors/new", { author: new Author()});
+  
+ 
 });
 
 // Create Author Route
 router.post("/", async (req, res) => {
+
   const author = new Author({
     name: req.body.name,
   });
+  
   try {
     const newAuthor = await author.save();
     res.redirect(`authors/${newAuthor.id}`);
@@ -37,6 +42,7 @@ router.post("/", async (req, res) => {
     res.render("authors/new", {
       author: author,
       errorMessage: "Error creating Author",
+      
     });
   }
 });
@@ -53,6 +59,7 @@ router.get('/:id', async (req, res) => {
   } catch {
     res.redirect('/')
   }
+  
 })
 
 // edit the other name
@@ -62,11 +69,11 @@ router.get("/:id/edit", async (req, res) => {
     res.render("authors/edit", { author: author });
   } catch {
     res.redirect("/authors");
-  }
-});
+  }});
 
 // Update Author
 router.put("/:id", async (req, res) => {
+
   let author;
   try {
     author = await Author.findById(req.params.id);

@@ -22,9 +22,9 @@
   <div class="form-item">
     <label>Publish Date</label>
     <input
-      type="date"
+      type="number"
       name="publishDate"
-      value="<%= book.publishDate == null ? '' : book.publishDate.toISOString().split('T')[0] %>"
+      value="<%= book.publishDate%>"
     />
   </div>
   <div class="form-item">
